@@ -62,3 +62,17 @@ The only thing i can't do is the sort
 
 ! (map double (Cons 3 (Cons 1 (Cons 4 (Cons 1 (Cons 2 Nil))))))
 ! (map square (Cons 3 (Cons 1 (Cons 4 (Cons 1 (Cons 2 Nil))))))
+
+sort!!
+
+(: insert (-> Number (List Number) (List Number)))
+(= (insert $x Nil) (Cons $x Nil))
+(= (insert $x (Cons $head $tail))
+   (if (<= $x $head)
+       (Cons $x (Cons $head $tail))
+       (Cons $head (insert $x $tail))))
+
+(: insertionSort (-> (List Number) (List Number)))
+(= (insertionSort Nil) Nil)
+(= (insertionSort (Cons $head $tail)) (insert $head (insertionSort $tail)))
+! (insertionSort (Cons 3 (Cons 1 (Cons 4 (Cons 1 (Cons 2 Nil))))))
