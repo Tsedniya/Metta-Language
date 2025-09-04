@@ -1,4 +1,4 @@
-The only thing i can't do is the sort
+
 
 !!! To Append 
 
@@ -76,3 +76,13 @@ sort!!
 (= (insertionSort Nil) Nil)
 (= (insertionSort (Cons $head $tail)) (insert $head (insertionSort $tail)))
 ! (insertionSort (Cons 3 (Cons 1 (Cons 4 (Cons 1 (Cons 2 Nil))))))
+
+!!remove duplicate
+
+(removeDuplicates Nil) = Nil
+
+(removeDuplicates (Cons $x $xs)) =
+    (if (contains? $xs $x)
+        (removeDuplicates $xs)                
+        (Cons $x (removeDuplicates $xs)))    
+!(removeDuplicates (Cons 3 (Cons 1 (Cons 4 (Cons 1 (Cons 2 Nil))))))
